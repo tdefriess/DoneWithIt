@@ -6,6 +6,7 @@ import WelcomeScreen from './app/screens/WelcomeScreen';
 
 import AppText from './app/components/AppText';
 import AppButton from './app/components/AppButton';
+import AppCard from './app/components/AppCard';
 
 export default function App() {
   return (
@@ -13,11 +14,19 @@ export default function App() {
     <View 
     style={{
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center'
+      // justifyContent: 'center',
+      // alignItems: 'center',
+      backgroundColor: '#f8f4f4',
+      padding: 20,
+      paddingTop: 100
     }}
     >
-      <WelcomeScreen />
+      <AppCard 
+        title="Red jacket for sale!"
+        subTitle="$100" 
+        image={require("./app/assets/jacket.jpg")}
+       ></AppCard>
+      {/* <WelcomeScreen /> */}
       {/* <AppButton title="Login" onPress={() => console.log('tapped')} /> */}
     </View>
   );
