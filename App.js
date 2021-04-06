@@ -17,8 +17,8 @@ export default function App() {
       alignItems: 'center'
     }}
     >
-      {/* <WelcomeScreen /> */}
-      <AppButton title="Login" onPress={() => console.log('tapped')} />
+      <WelcomeScreen />
+      {/* <AppButton title="Login" onPress={() => console.log('tapped')} /> */}
     </View>
   );
 }
