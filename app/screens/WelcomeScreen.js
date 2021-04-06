@@ -3,20 +3,18 @@ import { View, ImageBackground, Image, StyleSheet, Text, Button } from 'react-na
 
 export default function WelcomeScreen() {
     return (
-        <View style={styles.container}>
-            <ImageBackground
-                source={require("../assets/background.jpg")}
-                style={styles.bgImage}
-            >
-                <Image 
-                    style={styles.logo}
-                    source={require('../assets/logo-red.png')}
-                />
-                <Text style={styles.text}>Sell What You Don't Need</Text>
-            </ImageBackground>
+        <ImageBackground
+            source={require("../assets/background.jpg")}
+            style={styles.bgImage}
+        >
+            <Image 
+                style={styles.logo}
+                source={require('../assets/logo-red.png')}
+            />
+            <Text style={styles.text}>Sell What You Don't Need</Text>
             <View style={styles.login}></View>
             <View style={styles.register}></View>
-        </View>
+        </ImageBackground>
     )
 }
 
