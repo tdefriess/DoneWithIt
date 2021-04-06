@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, ImageBackground, Image, StyleSheet, Text, Button } from 'react-native';
 
-export default function Welcome() {
+export default function WelcomeScreen() {
     return (
         <View style={styles.container}>
             <ImageBackground
