@@ -1,28 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, TextInput, Text, View } from 'react-native';
-import ViewImageScreen from './app/screens/ViewImageScreen';
-import WelcomeScreen from './app/screens/WelcomeScreen';
-
-import AppText from './app/components/AppText';
-import AppButton from './app/components/AppButton';
-import AppCard from './app/components/AppCard';
-import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
-import MessagesScreen from './app/screens/MessagesScreen';
-import Screen from './app/components/Screen';
-import Icon from './app/components/Icon';
-import ListItem from './app/components/ListItem';
-import MyAccountScreen from './app/screens/MyAccountScreen';
-import ListingsScreen from './app/screens/ListingsScreen';
+import { StyleSheet, Switch } from 'react-native';
+import AppPicker from './app/components/AppPicker';
 import AppTextInput from './app/components/AppTextInput';
 
+import Screen from './app/components/Screen';
+
 export default function App() {
-  const [firstName, setFristName] = useState('');
+  const [isNew, setIsNew] = useState(false);
 
   return (
     <Screen>
-      <AppTextInput placeholder="Username" icon="email" />
-
+      <AppPicker icon="apps" placeholder="Category" />
+      <AppTextInput icon="email" placeholder="Email" />
     </Screen>
   );
 }

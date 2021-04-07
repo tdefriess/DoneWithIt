@@ -3,12 +3,14 @@ import { TextInput, View, StyleSheet } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import defaultStyles from '../config/styles';
+import AppText from './AppText';
 
-function AppTextInput({ icon,  ...otherProps }) {
+function AppPicker({ icon, placeholder,  ...otherProps }) {
     return (
         <View style={styles.container}>
             {icon && <MaterialCommunityIcons size={20} color={defaultStyles.colors.medium} name={icon} style={styles.icon} />}
-            <TextInput style={defaultStyles.text} {...otherProps} />
+            <AppText style={styles.text}>{placeholder}</AppText>
+            <MaterialCommunityIcons size={20} color={defaultStyles.colors.medium} name="chevron-down" />
         </View>
     );
 }
@@ -25,6 +27,9 @@ const styles = StyleSheet.create({
     icon: {
         marginRight: 20
     },
+    text: {
+        flex: 1
+    }
 })
 
-export default AppTextInput;
+export default AppPicker;
