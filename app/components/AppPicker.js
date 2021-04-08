@@ -7,13 +7,13 @@ import AppText from './AppText';
 import Screen from './Screen';
 import PickerItem from './PickerItem';
 
-function AppPicker({ icon, items, placeholder, onSelectItem, selectedItem }) {
+function AppPicker({ icon, items, placeholder, onSelectItem, selectedItem, width }) {
     const [modalVisible, setModalVisible] = useState(false);
 
     return (
         <>
             <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
-                <View style={styles.container}>
+                <View style={[styles.container, { width }]}>
                     {icon && <MaterialCommunityIcons size={20} color={defaultStyles.colors.medium} name={icon} style={styles.icon} />}
                     { selectedItem ? <AppText style={styles.text}>{selectedItem.label}</AppText> : <AppText style={styles.placeholder}>{placeholder}</AppText>}
                     <MaterialCommunityIcons size={20} color={defaultStyles.colors.medium} name="chevron-down" />
