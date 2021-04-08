@@ -7,7 +7,7 @@ import AppText from './AppText';
 import Screen from './Screen';
 import PickerItem from './PickerItem';
 
-function AppPicker({ icon, items, placeholder, onSelectItem, selectedItem, width = '100%', direction = 'column' }) {
+function AppPicker({ icon, items, placeholder, onSelectItem, PickerItemComponent = PickerItem, selectedItem, width = '100%', direction = 'column' }) {
     const [modalVisible, setModalVisible] = useState(false);
 
     return (
@@ -26,7 +26,7 @@ function AppPicker({ icon, items, placeholder, onSelectItem, selectedItem, width
                         data={items}
                         keyExtractor={item => item.value.toString()}
                         renderItem={({ item }) => 
-                            <PickerItem 
+                            <PickerItemComponent 
                                 label={item.label}
                                 onPress={() => {
                                     setModalVisible(false);

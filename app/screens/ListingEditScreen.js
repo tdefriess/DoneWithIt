@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import * as Yup from 'yup';
 
 import { AppForm, AppFormField, AppFormPicker, SubmitButton } from '../components/forms';
+import CategoryPickerItem from '../components/CategoryPickerItem';
 import Screen from '../components/Screen';
 
 const validationSchema = Yup.object().shape({
@@ -45,6 +46,7 @@ function ListingEditScreen(props) {
                 <AppFormPicker 
                     items={categories}
                     name="category"
+                    PickerItemComponent={CategoryPickerItem}
                     placeholder="Category"
                     width="50%"
                 />
