@@ -18,10 +18,10 @@ function ListItem({ title, subTitle, image, IconComponent, onPress, renderRightA
                     {IconComponent}
                     {image && <Image style={styles.image} source={image} />}
                     <View style={styles.detailContainer}>
-                        <AppText style={styles.title}>{title}</AppText>
-                        {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
+                        <AppText numberOfLines={1} style={styles.title}>{title}</AppText>
+                        {subTitle && <AppText numberOfLines={2} style={styles.subTitle}>{subTitle}</AppText>}
                     </View>
-                    {showChevrons && <MaterialCommunityIcons style={{alignSelf: 'center'}} size={20} color={defaultStyles.colors.medium} name="chevron-right" />}
+                    {showChevrons && <MaterialCommunityIcons style={{alignSelf: 'center'}} size={25} color={defaultStyles.colors.medium} name="chevron-right" />}
                 </View>
             </TouchableHighlight>
         </Swipeable>
