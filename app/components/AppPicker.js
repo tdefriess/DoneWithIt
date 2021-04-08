@@ -7,7 +7,16 @@ import AppText from './AppText';
 import Screen from './Screen';
 import PickerItem from './PickerItem';
 
-function AppPicker({ icon, items, placeholder, onSelectItem, PickerItemComponent = PickerItem, selectedItem, width = '100%', direction = 'column' }) {
+function AppPicker({ 
+    icon,
+    items,
+    numberofColumns = 1,
+    onSelectItem, 
+    PickerItemComponent = PickerItem, 
+    placeholder, 
+    selectedItem, 
+    width = '100%', 
+}) {
     const [modalVisible, setModalVisible] = useState(false);
 
     return (
@@ -25,8 +34,10 @@ function AppPicker({ icon, items, placeholder, onSelectItem, PickerItemComponent
                     <FlatList 
                         data={items}
                         keyExtractor={item => item.value.toString()}
+                        numColumns={numberofColumns}
                         renderItem={({ item }) => 
-                            <PickerItemComponent 
+                            <PickerItemComponent
+                                item={item}
                                 label={item.label}
                                 onPress={() => {
                                     setModalVisible(false);
