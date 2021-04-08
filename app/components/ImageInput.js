@@ -3,9 +3,9 @@ import { Image, StyleSheet, View } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
-import defaultStyles from '../../config/styles'
-import Icon from '../Icon';
-import Screen from '../Screen';
+import defaultStyles from '../config/styles'
+import Icon from './Icon';
+import Screen from './Screen';
 
 function ImageInput({ imageUri, onChangeImage }) {
     const selectImage = async () => {

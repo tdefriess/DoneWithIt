@@ -9,7 +9,7 @@ import LoginScreen from './app/screens/LoginScreen';
 import MessagesScreen from './app/screens/MessagesScreen';
 import RegisterScreen from './app/screens/RegisterScreen';
 import { Button, Image } from 'react-native';
-import ImageInput from './app/components/forms/ImageInput'
+import ImageInput from './app/components/ImageInput'
 
 export default function App() {
   const [imageUri, setImageUri] = useState();
@@ -42,7 +42,6 @@ export default function App() {
     <ImageInput
       imageUri={imageUri}
       onChangeImage={(uri) => setImageUri(uri)}
-      onPress={selectImage}
     />
   );
 }
