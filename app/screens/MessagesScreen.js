@@ -8,7 +8,7 @@ const initialMessages = [
     {
         id: 1,
         title: 'T1',
-        description: 'D1',
+        description: 'D2',
         image: require('../assets/mosh.jpg')
     },
     {
