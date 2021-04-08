@@ -7,7 +7,7 @@ import AppText from './AppText';
 import Screen from './Screen';
 import PickerItem from './PickerItem';
 
-function AppPicker({ icon, items, placeholder, onSelectItem, selectedItem, width }) {
+function AppPicker({ icon, items, placeholder, onSelectItem, selectedItem, width = '100%', direction = 'column' }) {
     const [modalVisible, setModalVisible] = useState(false);
 
     return (
@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
         backgroundColor: defaultStyles.colors.light,
         borderRadius: 25,
         flexDirection: 'row',
-        width: '100%',
         padding: 15,
         marginVertical: 10
     },

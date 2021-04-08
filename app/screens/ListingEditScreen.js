@@ -13,9 +13,13 @@ const validationSchema = Yup.object().shape({
 })
 
 const categories = [
-    { label: "Clothing", value: 1 },
-    { label: "Furniture", value: 2 },
-    { label: "Cameras", value: 3 }
+    { label: "Furniture", value: 1, icon: "floor-lamp", iconColor: '#fc5c65' },
+    { label: "Cars", value: 2, icon: "car", iconColor: '#fd9644' },
+    { label: "Cameras", value: 3, icon: "camera", iconColor: '#fed330' },
+    { label: "Games", value: 4, icon: "cards", iconColor: '#26de81' },
+    { label: "Clothing", value: 5, icon: "shoe-heel", iconColor: '#2bcbba' },
+    { label: "Sports", value: 6, icon: "basketball", iconColor: '#45aaf2' },
+    { label: "Movies & Music", value: 7, icon: "headphones", iconColor: '#4b7bec' },
 ]
 
 function ListingEditScreen(props) {
