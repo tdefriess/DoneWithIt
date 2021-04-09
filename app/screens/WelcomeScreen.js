@@ -1,10 +1,13 @@
 import React from 'react';
 import { View, ImageBackground, Image, StyleSheet, Text, Button } from 'react-native';
+import { useNavigation } from '@react-navigation/native'
 
 import AppButton from '../components/AppButton';
 import colors from '../config/colors';
 
 export default function WelcomeScreen() {
+    const navigation = useNavigation();
+
     return (
         <ImageBackground
             blurRadius={3}
@@ -19,8 +22,8 @@ export default function WelcomeScreen() {
                 <Text style={styles.tagline}>Sell What You Don't Need</Text>
             </View>
             <View style={styles.buttonContainer}>
-                <AppButton title='Login'>LOGIN</AppButton>
-                <AppButton title='Register' color='secondary'>REGISTER</AppButton>
+                <AppButton title='Login' onPress={() => navigation.navigate('Login')} >LOGIN</AppButton>
+                <AppButton title='Register' onPress={() => navigation.navigate('Register')} color='secondary'>REGISTER</AppButton>
             </View>
         </ImageBackground>
     )
