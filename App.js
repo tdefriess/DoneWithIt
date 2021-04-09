@@ -16,15 +16,25 @@ export default function App() {
   const [imageUri, setImageUri] = useState();
   const [imageUris, setImageUris] = useState([]);
 
-  const requestPermission = async () => {
-    const { granted } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    if (!granted)
-      alert('You need to enable permission to access the library.')
-  }
+  // const requestPermission = async () => {
+  //   const { granted } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+  //   if (!granted)
+  //     alert('You need to enable permission to access the library.')
+  // }
 
-  useEffect(() => {
-    requestPermission();
-  }, [])
+  // useEffect(() => {
+  //   requestPermission();
+  // }, [])
+
+  const selectImage = async () => {
+    try {
+        const result = await ImagePicker.launchImageLibraryAsync();
+        if (!result.cancelled)
+            setImageUri(result.uri);
+    } catch (error) {
+        console.log('Error reading an image: ImageInput.js', error)
+    }
+}
 
   const handleAddImage = (uri) => {
     const newUris = imageUris.slice()
@@ -50,18 +60,16 @@ export default function App() {
   // }
 
   return (
-    // <Screen>
-    //   <Button title="Select Image" onPress={selectImage} />
-    //   <Image source={{ uri: imageUri}} style={{ width: 200, height:}} />
-    // </Screen>
-    // <ImageInput
-    //   imageUri={imageUri}
-    //   onChangeImage={(uri) => setImageUri(uri)}
+    <Screen>
+      <ImageInput
+        imageUri={imageUri}
+        onChangeImage={uri => setImageUri(uri)}
+      />
+    </Screen>
+    // <ImageInputList
+    //   imageUris={imageUris}
+    //   onAddImage={handleAddImage}
+    //   onRemoveImage={handleDeleteImage}
     // />
-    <ImageInputList
-      imageUris={imageUris}
-      onAddImage={handleAddImage}
-      onRemoveImage={handleDeleteImage}
-    />
   );
 }
