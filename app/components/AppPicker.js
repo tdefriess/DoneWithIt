@@ -23,12 +23,26 @@ function AppPicker({
         <>
             <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
                 <View style={[styles.container, { width }]}>
-                    {icon && <MaterialCommunityIcons size={20} color={defaultStyles.colors.medium} name={icon} style={styles.icon} />}
-                    { selectedItem ? <AppText style={styles.text}>{selectedItem.label}</AppText> : <AppText style={styles.placeholder}>{placeholder}</AppText>}
-                    <MaterialCommunityIcons size={20} color={defaultStyles.colors.medium} name="chevron-down" />
+                    {icon && 
+                        <MaterialCommunityIcons 
+                            color={defaultStyles.colors.medium} 
+                            name={icon} 
+                            size={20} 
+                            style={styles.icon} 
+                        />}
+                    { selectedItem ? (
+                        <AppText style={styles.text}>{selectedItem.label}</AppText>
+                    ) : (
+                        <AppText style={styles.placeholder}>{placeholder}</AppText>
+                    )}
+                    <MaterialCommunityIcons 
+                        size={20} 
+                        color={defaultStyles.colors.medium} 
+                        name="chevron-down" 
+                    />
                 </View>
             </TouchableWithoutFeedback>
-            <Modal visible={modalVisible} animated="slide">
+            <Modal visible={modalVisible} animationType="slide">
                 <Screen>
                     <Button title="Close" onPress={() => setModalVisible(false)} />
                     <FlatList 

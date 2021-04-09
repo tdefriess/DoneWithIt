@@ -1,16 +1,11 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import AppText from './AppText';
-import defaultStyles from '../config/styles';
 
 function PickerItem({ item, onPress }) {
     return (
         <TouchableOpacity onPress={onPress}>
-            {/* {icon && <View style={[styles.iconContainer, {backgroundColor: bgColor} ]}>
-                <MaterialCommunityIcons size={60} color={defaultStyles.colors.white} name={icon} />
-            </View>} */}
             <AppText style={styles.text}>{item.label}</AppText>
         </TouchableOpacity>
     );
