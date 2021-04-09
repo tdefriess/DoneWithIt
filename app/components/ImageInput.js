@@ -14,19 +14,20 @@ function ImageInput({ imageUri, onChangeImage }) {
             if (!result.cancelled)
                 onChangeImage(result.uri);
         } catch (error) {
-            console.log('Error reading an image', error)
+            console.log('Error reading an image: ImageInput.js', error)
         }
     }
 
     return (
         <Screen>
-            <TouchableWithoutFeedback onPress={selectImage}>
+            <TouchableWithoutFeedback style={{ flex: 1}} onPress={selectImage}>
                 <View style={styles.container}>
                     { imageUri ?
                         <Image 
                             source={{ uri: imageUri }}
                             style={styles.image}
                         />
+                        // null
                     :
                         <Icon
                             borderRadius={20}
