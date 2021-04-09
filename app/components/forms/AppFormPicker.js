@@ -4,7 +4,14 @@ import { useFormikContext } from 'formik';
 import ErrorMessage from './ErrorMessage';
 import AppPicker from '../AppPicker';
 
-function AppFormPicker({ items, name, numberOfColumns, PickerItemComponent, placeholder, ...otherProps }) {
+function AppFormPicker({ 
+    items, 
+    name, 
+    numberOfColumns, 
+    PickerItemComponent, 
+    placeholder, 
+    width 
+}) {
     const { setFieldValue, errors, touched, values} = useFormikContext();
 
     return (
@@ -13,10 +20,10 @@ function AppFormPicker({ items, name, numberOfColumns, PickerItemComponent, plac
                 items={items}
                 numberofColumns={numberOfColumns}
                 onSelectItem={(item) => setFieldValue(name, item)}
-                PickerItemComponent = {PickerItemComponent}
+                PickerItemComponent={PickerItemComponent}
                 placeholder={placeholder}
                 selectedItem={values[name]}
-                {...otherProps}
+                width={width}
             />
             <ErrorMessage error={errors[name]} visible={touched[name]} />
         </>
