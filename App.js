@@ -13,63 +13,23 @@ import ImageInput from './app/components/ImageInput'
 import ImageInputList from './app/components/ImageInputList';
 
 export default function App() {
-  const [imageUri, setImageUri] = useState();
   const [imageUris, setImageUris] = useState([]);
 
-  // const requestPermission = async () => {
-  //   const { granted } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-  //   if (!granted)
-  //     alert('You need to enable permission to access the library.')
-  // }
-
-  // useEffect(() => {
-  //   requestPermission();
-  // }, [])
-
-  const selectImage = async () => {
-    try {
-        const result = await ImagePicker.launchImageLibraryAsync();
-        if (!result.cancelled)
-            setImageUri(result.uri);
-    } catch (error) {
-        console.log('Error reading an image: ImageInput.js', error)
-    }
-}
-
-  const handleAddImage = (uri) => {
-    const newUris = imageUris.slice()
-    newUris.push(uri)
-    setImageUris(newUris)
-    console.log(imageUris)
+  const handleAdd = uri => {
+    setImageUris([...imageUris, uri])
   }
 
-  const handleDeleteImage = ({ uri }) => {
-    setImageUris(imageUris.filter((image) => {
-      uri === image[uri]
-    }))
+  const handleRemove = uri => {
+    setImageUris(imageUris.filter(imageUri => imageUri !== uri));
   }
-
-  // const selectImage = async () => {
-  //   try {
-  //     const result = await ImagePicker.launchImageLibraryAsync();
-  //     if (!result.cancelled)
-  //       setImageUri(result.uri);
-  //   } catch (error) {
-  //     console.log('Error reading an image: App.js', error);
-  //   }
-  // }
 
   return (
     <Screen>
-      <ImageInput
-        imageUri={imageUri}
-        onChangeImage={uri => setImageUri(uri)}
+      <ImageInputList
+        imageUris={imageUris}
+        onAddImage={handleAdd}
+        onRemoveImage={handleRemove}
       />
     </Screen>
-    // <ImageInputList
-    //   imageUris={imageUris}
-    //   onAddImage={handleAddImage}
-    //   onRemoveImage={handleDeleteImage}
-    // />
   );
 }

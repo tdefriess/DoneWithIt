@@ -6,39 +6,25 @@ import ImageInput from './ImageInput';
 import Screen from './Screen';
 
 function ImageInputList({ imageUris = [], onAddImage, onRemoveImage }) {
-    const [imageUri, setImageUri] = useState();
-
-    // const selectImage = async () => {
-    //     try {
-    //       const result = await ImagePicker.launchImageLibraryAsync();
-    //       if (!result.cancelled)
-    //         setImageUri(result.uri);
-    //     } catch (error) {
-    //       console.log('Error reading an image:', error);
-    //     }
-    //   }
 
     return (
-        <Screen>
-            <View style={[styles.container, { flex: 1}]}>
-                {imageUris.map((uri) => {
-                    <Image
-                        key={uri}
-                        source={uri=uri}
-                        style={styles.image}
-                    />
-                }) }
+        <View style={[styles.container, { flex: 1}]}>
+            {imageUris.map(uri => (
                 <ImageInput 
-                    imageUri={imageUri}
-                    onChangeImage={(uri) => onAddImage(uri) }
+                    imageUri={uri}
+                    key={uri}
+                    onChangeImage={() => onRemoveImage(uri) }
                 />
-            </View>
-        </Screen>
+            )) }
+            <ImageInput onChangeImage={uri => onAddImage(uri)} />
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {},
+    container: {
+        flexDirection: 'row',
+    },
     image: {
         height: 120,
         width: 120,
