@@ -1,9 +1,11 @@
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
-import AppCard from '../components/AppCard';
+import { useNavigation } from '@react-navigation/native'
 
+import AppCard from '../components/AppCard';
 import Screen from '../components/Screen';
 import colors from '../config/colors';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 const listings = [
     {
@@ -20,17 +22,21 @@ const listings = [
     }
 ]
 function ListingsScreen(props) {
+    const navigation = useNavigation();
+
     return (
         <Screen style={styles.screen}>
             <FlatList 
                 data={listings}
                 keyExtractor={listing => listing.id.toString()}
                 renderItem={({ item }) =>
-                    <AppCard
-                        title={item.title}
-                        subTitle={"$" + item.price}
-                        image={item.image}
-                    />
+                    <TouchableWithoutFeedback onPress={() => navigation.navigate('Listing Details')}>
+                        <AppCard
+                            title={item.title}
+                            subTitle={"$" + item.price}
+                            image={item.image}
+                        />
+                    </TouchableWithoutFeedback>
             }
             />
         </Screen>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Text } from 'react-native';
+import { Button, MaskedViewBase, Text } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
@@ -9,6 +9,13 @@ import Screen from './app/components/Screen';
 import LoginScreen from './app/screens/LoginScreen';
 import RegisterScreen from './app/screens/RegisterScreen';
 import WelcomeScreen from './app/screens/WelcomeScreen';
+import colors from './app/config/colors';
+import MyAccountScreen from './app/screens/MyAccountScreen';
+import ListingsScreen from './app/screens/ListingsScreen';
+import ListingEditScreen from './app/screens/ListingEditScreen';
+import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
+import MessagesScreen from './app/screens/MessagesScreen';
+import Icon from './app/components/Icon';
 
 const Link = () => {
   const navigation = useNavigation();
@@ -40,25 +47,40 @@ const Stack = createStackNavigator();
 const FeedNavigator = () => (
   <Stack.Navigator
     screenOptions={{
-      headerStyle: { backgroundColor: "dodgerblue"},
-      headerTintColor: 'white',
+      headerShown: false
     }}
   >
     <Stack.Screen 
-      name="Tweets" 
-      component={Tweets}
+      name="Feed" 
+      component={ListingsScreen}
       options={{
-        headerStyle: { backgroundColor: "tomato"},
-        headerTintColor: 'white',
+        
       }}
     />
     <Stack.Screen
-      name="TweetDetails" 
-      component={TweetDetails}
-      options={({ route }) => ({ title: route.params.id})}
+      name="Listing Details" 
+      component={ListingDetailsScreen}
+      options={{}}
     />
   </Stack.Navigator>
 );
+
+const AccountNavigator = () => (
+  <Stack.Navigator
+    screenOptions={{
+      headerShown: false
+    }}
+  >
+    <Stack.Screen
+      name="Account"
+      component={MyAccountScreen}
+    />
+    <Stack.Screen
+      name="Messages"
+      component={MessagesScreen}
+    />
+  </Stack.Navigator>
+)
 
 const AuthNavigator = () => (
   <Stack.Navigator>
@@ -74,20 +96,14 @@ const AuthNavigator = () => (
   </Stack.Navigator>
 )
 
-const Account = () => (
-  <Screen>
-    <Text>Account</Text>
-  </Screen>
-)
-
 const Tab = createBottomTabNavigator();
 const TabNavigator = () => (
   <Tab.Navigator
     tabBarOptions={{
-      activeBackgroundColor: 'tomato',
-      activeTintColor: 'white',
-      inactiveBackgroundColor: '#eee',
-      inactiveTintColor: 'black'
+      activeBackgroundColor: colors.white,
+      activeTintColor: colors.primary,
+      inactiveBackgroundColor: colors.white,
+      inactiveTintColor: colors.medium
     }}
   >
     <Tab.Screen
@@ -97,14 +113,26 @@ const TabNavigator = () => (
         tabBarIcon: ({ size, color }) => <MaterialCommunityIcons name="home" size={size} color={color} />
       }}
     />
-    <Tab.Screen name="Account" component={Account} />
+    <Tab.Screen 
+      name="EditListing"
+      component={ListingEditScreen}
+      options={{
+        // tabBarButton: () => <Icon name="plus" size={50} iconColor={colors.primary} backgroundColor={colors.medium} />,
+      }}
+    />
+    <Tab.Screen name="Account" component={AccountNavigator}
+      options={{
+        tabBarIcon: ({ size, color }) => <MaterialCommunityIcons name="account" size={size} color={color} />
+      }}
+    
+    />
   </Tab.Navigator>
 )
 
 export default function App() {
   return (
     <NavigationContainer>
-      <AuthNavigator />
+      <TabNavigator />
     </NavigationContainer>
   );
 }
