@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, ImageBackground, Image, StyleSheet, Text, Button } from 'react-native';
+import { View, ImageBackground, Image, StyleSheet, Text } from 'react-native';
 
 import AppButton from '../components/AppButton';
-import colors from '../config/colors';
+import routes from '../navigation/routes';
+
 
 export default function WelcomeScreen({ navigation }) {
 
@@ -20,8 +21,8 @@ export default function WelcomeScreen({ navigation }) {
                 <Text style={styles.tagline}>Sell What You Don't Need</Text>
             </View>
             <View style={styles.buttonContainer}>
-                <AppButton title='Login' onPress={() => navigation.navigate('Login')} >LOGIN</AppButton>
-                <AppButton title='Register' onPress={() => navigation.navigate('Register')} color='secondary'>REGISTER</AppButton>
+                <AppButton title='Login' onPress={() => navigation.navigate(routes.LOGIN)} >LOGIN</AppButton>
+                <AppButton title='Register' onPress={() => navigation.navigate(routes.REGISTER)} color='secondary'>REGISTER</AppButton>
             </View>
         </ImageBackground>
     )

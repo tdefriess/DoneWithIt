@@ -5,6 +5,7 @@ import Icon from '../components/Icon';
 import { ListItem, ListItemSeparator } from '../components/lists';
 import Screen from '../components/Screen';
 import colors from '../config/colors';
+import routes from '../navigation/routes';
 
 const menuItems = [
     { 
@@ -17,7 +18,7 @@ const menuItems = [
     },
     { 
         title: "My Messages",
-        targetScreen: "Messages",
+        targetScreen: routes.MESSAGES,
         icon: {
             name: "email",
             backgroundColor: colors.secondary
