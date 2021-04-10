@@ -6,6 +6,7 @@ import ListingEditScreen from '../screens/ListingEditScreen';
 import colors from '../config/colors';
 import FeedNavigator from './FeedNavigator';
 import AccountNavigator from './AccountNavigator';
+import NewListingButton from './NewListingButton';
 
 
 const Tab = createBottomTabNavigator();
@@ -15,7 +16,7 @@ const AppNavigator = () => (
         activeBackgroundColor: colors.white,
         activeTintColor: colors.primary,
         inactiveBackgroundColor: colors.white,
-        inactiveTintColor: colors.medium
+        inactiveTintColor: colors.medium,
       }}
     >
       <Tab.Screen
@@ -28,9 +29,9 @@ const AppNavigator = () => (
       <Tab.Screen 
         name="ListingEdit"
         component={ListingEditScreen}
-        options={{
-          // tabBarButton: () => <Icon name="plus" size={50} iconColor={colors.primary} backgroundColor={colors.medium} />,
-        }}
+        options={({ navigation }) => ({
+          tabBarButton: () => <NewListingButton onPress={() => navigation.navigate("ListingEdit")} />,
+        })}
       />
       <Tab.Screen name="Account" component={AccountNavigator}
         options={{
