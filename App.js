@@ -15,6 +15,7 @@ import MessagesScreen from './app/screens/MessagesScreen';
 import Icon from './app/components/Icon';
 import AuthNavigator from './app/navigation/AuthNavigator';
 import navigationTheme from './app/navigation/navigationTheme';
+import AppNavigator from './app/navigation/AppNavigator';
 
 const Link = () => {
   const navigation = useNavigation();
@@ -95,43 +96,10 @@ const AccountNavigator = () => (
 //   </Stack.Navigator>
 // )
 
-const Tab = createBottomTabNavigator();
-const TabNavigator = () => (
-  <Tab.Navigator
-    tabBarOptions={{
-      activeBackgroundColor: colors.white,
-      activeTintColor: colors.primary,
-      inactiveBackgroundColor: colors.white,
-      inactiveTintColor: colors.medium
-    }}
-  >
-    <Tab.Screen
-      name="Feed" 
-      component={FeedNavigator}
-      options={{
-        tabBarIcon: ({ size, color }) => <MaterialCommunityIcons name="home" size={size} color={color} />
-      }}
-    />
-    <Tab.Screen 
-      name="EditListing"
-      component={ListingEditScreen}
-      options={{
-        // tabBarButton: () => <Icon name="plus" size={50} iconColor={colors.primary} backgroundColor={colors.medium} />,
-      }}
-    />
-    <Tab.Screen name="Account" component={AccountNavigator}
-      options={{
-        tabBarIcon: ({ size, color }) => <MaterialCommunityIcons name="account" size={size} color={color} />
-      }}
-    
-    />
-  </Tab.Navigator>
-)
-
 export default function App() {
   return (
     <NavigationContainer theme={navigationTheme}>
-      <AuthNavigator />
+      <AppNavigator />
     </NavigationContainer>
   );
 }
