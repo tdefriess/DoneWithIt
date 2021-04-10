@@ -3,9 +3,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 import ListingEditScreen from '../screens/ListingEditScreen';
-import ListingsScreen from '../screens/ListingsScreen';
 import MyAccountScreen from '../screens/MyAccountScreen';
 import colors from '../config/colors';
+import FeedNavigator from './FeedNavigator';
 
 
 const Tab = createBottomTabNavigator();
@@ -19,8 +19,8 @@ const AppNavigator = () => (
       }}
     >
       <Tab.Screen
-        name="Listing" 
-        component={ListingsScreen}
+        name="Feed" 
+        component={FeedNavigator}
         options={{
           tabBarIcon: ({ size, color }) => <MaterialCommunityIcons name="home" size={size} color={color} />
         }}

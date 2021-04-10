@@ -1,15 +1,11 @@
 import React from 'react';
 import { Button, Text } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 import Screen from './app/components/Screen';
-import colors from './app/config/colors';
 import MyAccountScreen from './app/screens/MyAccountScreen';
 import ListingsScreen from './app/screens/ListingsScreen';
-import ListingEditScreen from './app/screens/ListingEditScreen';
 import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
 import MessagesScreen from './app/screens/MessagesScreen';
 import Icon from './app/components/Icon';

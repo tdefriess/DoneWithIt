@@ -1,11 +1,9 @@
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native'
 
 import AppCard from '../components/AppCard';
 import Screen from '../components/Screen';
 import colors from '../config/colors';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 const listings = [
     {
@@ -21,8 +19,7 @@ const listings = [
         image: require('../assets/couch.jpg')
     }
 ]
-function ListingsScreen(props) {
-    const navigation = useNavigation();
+function ListingsScreen({ navigation }) {
 
     return (
         <Screen style={styles.screen}>
@@ -30,13 +27,12 @@ function ListingsScreen(props) {
                 data={listings}
                 keyExtractor={listing => listing.id.toString()}
                 renderItem={({ item }) =>
-                    <TouchableWithoutFeedback onPress={() => navigation.navigate('Listing Details')}>
-                        <AppCard
-                            title={item.title}
-                            subTitle={"$" + item.price}
-                            image={item.image}
-                        />
-                    </TouchableWithoutFeedback>
+                    <AppCard
+                        title={item.title}
+                        subTitle={"$" + item.price}
+                        image={item.image}
+                        onPress={() => navigation.navigate("Listing Details", item)}
+                    />
             }
             />
         </Screen>
