@@ -17,6 +17,7 @@ import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
 import MessagesScreen from './app/screens/MessagesScreen';
 import Icon from './app/components/Icon';
 import AuthNavigator from './app/navigation/AuthNavigator';
+import navigationTheme from './app/navigation/navigationTheme';
 
 const Link = () => {
   const navigation = useNavigation();
@@ -132,7 +133,7 @@ const TabNavigator = () => (
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={navigationTheme}>
       <AuthNavigator />
     </NavigationContainer>
   );
