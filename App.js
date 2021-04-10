@@ -16,6 +16,7 @@ import ListingEditScreen from './app/screens/ListingEditScreen';
 import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
 import MessagesScreen from './app/screens/MessagesScreen';
 import Icon from './app/components/Icon';
+import AuthNavigator from './app/navigation/AuthNavigator';
 
 const Link = () => {
   const navigation = useNavigation();
@@ -82,19 +83,19 @@ const AccountNavigator = () => (
   </Stack.Navigator>
 )
 
-const AuthNavigator = () => (
-  <Stack.Navigator>
-    <Stack.Screen name="Welcome" component={WelcomeScreen} options={{
-      headerShown: false
-    }} />
-    <Stack.Screen name="Login" component={LoginScreen} options={{
-      headerShown: false
-    }} />
-    <Stack.Screen name="Register" component={RegisterScreen} options={{
-      headerShown: false
-    }} />
-  </Stack.Navigator>
-)
+// const AuthNavigator = () => (
+//   <Stack.Navigator>
+//     <Stack.Screen name="Welcome" component={WelcomeScreen} options={{
+//       headerShown: false
+//     }} />
+//     <Stack.Screen name="Login" component={LoginScreen} options={{
+//       headerShown: false
+//     }} />
+//     <Stack.Screen name="Register" component={RegisterScreen} options={{
+//       headerShown: false
+//     }} />
+//   </Stack.Navigator>
+// )
 
 const Tab = createBottomTabNavigator();
 const TabNavigator = () => (
@@ -132,7 +133,7 @@ const TabNavigator = () => (
 export default function App() {
   return (
     <NavigationContainer>
-      <TabNavigator />
+      <AuthNavigator />
     </NavigationContainer>
   );
 }

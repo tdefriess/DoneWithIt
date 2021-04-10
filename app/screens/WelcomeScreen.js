@@ -1,12 +1,10 @@
 import React from 'react';
 import { View, ImageBackground, Image, StyleSheet, Text, Button } from 'react-native';
-import { useNavigation } from '@react-navigation/native'
 
 import AppButton from '../components/AppButton';
 import colors from '../config/colors';
 
-export default function WelcomeScreen() {
-    const navigation = useNavigation();
+export default function WelcomeScreen({ navigation }) {
 
     return (
         <ImageBackground
