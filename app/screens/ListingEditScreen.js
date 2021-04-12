@@ -38,7 +38,7 @@ function ListingEditScreen(props) {
 
     const location = useLocation();
 
-    const handleSubmit = async (listing) => {
+    const handleSubmit = async (listing, { resetForm }) => {
         setProgress(0);
         setUploadVisible(true);
         const result = await listingsApi.postListing(
@@ -50,6 +50,8 @@ function ListingEditScreen(props) {
             setUploadVisible(false);
             return alert('Could not save the listing.');
         }
+
+        resetForm();
     }
 
     return (
