@@ -4,8 +4,10 @@ import * as Yup from 'yup';
 
 import { AppForm, AppFormField, AppFormPicker, SubmitButton } from '../components/forms';
 import CategoryPickerItem from '../components/CategoryPickerItem';
-import Screen from '../components/Screen';
 import FormImagePicker from '../components/forms/FormImagePicker';
+import listingsApi from '../api/listings';
+import Screen from '../components/Screen';
+import useApi from '../hooks/useApi';
 import useLocation from '../hooks/useLocation';
 
 const validationSchema = Yup.object().shape({
@@ -29,33 +31,21 @@ const categories = [
 ]
 
 function ListingEditScreen(props) {
+    // const { error, loading, request: postListings } = useApi(listingsApi.postListings)
+
     const location = useLocation();
 
-    const handleSubmit = ({ title, price, description, category, images }) => {
-        const data = new FormData();
-        data.append('title', title);
-        data.append('price', price);
-        data.append('description', description);
-        data.append('category', category.label);
-
-        for (let i = 0; i < images.length; i++) {
-            data.append('images', {
-                name: 'image ' + (i + 1),
-                type: 'image/jpeg',
-                uri: images[i]
-            })
-        }
-
-        data.append('location', JSON.stringify(location));
-
-        console.log(data)
+    const handleSubmit = async (listing) => {
+        const result = await listingsApi.postListing({...listing, location})
+        if (!result.ok) return alert('Could not save the listing.');
+        alert('Success');
     }
 
     return (
         <Screen style={styles.container}>
             <AppForm
                 initialValues={{ title: '', price: '', description: '', category: null, images: []}}
-                onSubmit={(values) => handleSubmit(values)}
+                onSubmit={handleSubmit}
                 validationSchema={validationSchema}
             >
                 <FormImagePicker name="images" />
