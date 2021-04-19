@@ -5,8 +5,10 @@ import * as Yup from 'yup';
 import authApi from '../api/auth';
 import usersApi from '../api/users';
 import useAuth from '../auth/useAuth';
+import ActivityIndicator from '../components/ActivityIndicator';
 import { AppForm, AppFormField, ErrorMessage, SubmitButton } from '../components/forms';
 import Screen from '../components/Screen';
+import useApi from '../hooks/useApi';
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().required().label("Name"),
@@ -15,11 +17,13 @@ const validationSchema = Yup.object().shape({
 })
 
 function RegisterScreen(props) {
+    const registerApi = useApi(usersApi.register);
+    const loginApi = useApi(authApi.login);
     const auth = useAuth();
     const [error, setError] = useState();
 
     const handleSubmit = async (userInfo) => {
-        const result = await usersApi.register(userInfo);
+        const result = await registerApi.request(userInfo);
 
         if (!result.ok) {
             if (result.data) setError(result.data.error);
@@ -30,7 +34,7 @@ function RegisterScreen(props) {
             return;
         }
 
-        const { data: authToken } = await authApi.login(
+        const { data: authToken } = await loginApi.request(
             userInfo.email,
             userInfo.password
         );
@@ -39,6 +43,7 @@ function RegisterScreen(props) {
 
     return (
         <Screen style={styles.container}>
+            <ActivityIndicator visible={registerApi.loading || loginApi.loading} />
             <AppForm
                 initialValues={{ name: '', email: '', password: ''}}
                 onSubmit={handleSubmit}
